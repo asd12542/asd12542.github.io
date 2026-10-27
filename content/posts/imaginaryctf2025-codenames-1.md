@@ -9,6 +9,7 @@ categories: [CTF]
 tags: [ImaginaryCTF, Web, Python, 路径穿越]
 toc: true
 comment: false
+not_cover: true
 ---
 
 题目提示：

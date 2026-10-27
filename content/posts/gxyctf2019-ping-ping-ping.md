@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [GXYCTF, Web, RCE, 命令执行]
 toc: true
 comment: false
+not_cover: true
 ---
 
 ![题目界面](/img/posts/gxyctf2019-ping-ping-ping/01.png)

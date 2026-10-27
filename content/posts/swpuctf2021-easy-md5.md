@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [SWPUCTF, Web, PHP, MD5, 弱类型比较]
 toc: true
 comment: false
+not_cover: true
 ---
 
 题目链接：https://www.nssctf.cn/problem/386

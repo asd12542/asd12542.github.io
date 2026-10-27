@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [CISCN, Web, PHP, 反序列化, iconv]
 toc: true
 comment: false
+not_cover: true
 ---
 
 ## a. 漏洞概述

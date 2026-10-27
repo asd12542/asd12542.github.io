@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [SWPUCTF, Web, RCE, 命令执行]
 toc: true
 comment: false
+not_cover: true
 ---
 
 附题目链接：https://www.nssctf.cn/problem/425

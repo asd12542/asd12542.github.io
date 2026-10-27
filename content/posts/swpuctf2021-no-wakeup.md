@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [SWPUCTF, Web, PHP, 反序列化, wakeup绕过]
 toc: true
 comment: false
+not_cover: true
 ---
 
 ![题目界面](/img/posts/swpuctf2021-no-wakeup/01.png)

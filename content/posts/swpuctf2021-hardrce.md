@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [SWPUCTF, Web, PHP, RCE, 取反绕过]
 toc: true
 comment: false
+not_cover: true
 ---
 
 本体总来讲还是比较简单的，主要就是考察 RCE 绕过，不过也给新入门的小伙伴提供了一个新思路，就是无字母的 RCE，可以进行绕过，例如异或、取反、自增自减等。

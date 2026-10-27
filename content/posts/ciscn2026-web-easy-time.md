@@ -8,6 +8,7 @@ categories: [CTF]
 tags: [CISCN, Web, SSRF, 文件上传, Zip Slip]
 toc: true
 comment: false
+not_cover: true
 ---
 
 我这是复现，所以有些环境可能会有出入，借鉴了一些大佬的思路（[第十九届全国大学生信息安全竞赛半决赛 Web 题 easy_time 详细题解：Cookie 伪造 + Zip Slip + SSRF 拿 Flag](https://blog.csdn.net/2301_76794844/article/details/159472594)）。
