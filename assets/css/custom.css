@@ -17,3 +17,26 @@
 [data-theme=dark] {
   --efu-background: #201d18;
 }
+
+/* ===== 页脚链接组横排 ===== */
+/* 覆盖主题默认的竖排（flex-direction: column） */
+#footer #st-footer .footer-links {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2px 6px;
+  justify-content: center;
+}
+
+/* 横排时取消主题里 margin-right:auto 造成的左贴边 */
+#footer #st-footer .footer-item {
+  margin-right: 0;
+}
+
+/* 组标题与链接一起居中，视觉更整齐 */
+#footer #st-footer .footer-group {
+  text-align: center;
+}
+
+#footer #st-footer .footer-title-group {
+  justify-content: center;
+}
