@@ -36,3 +36,16 @@ links:
         link: https://gohugo.io/
         avatar: /img/friends/hugo.png
         descr: 本站使用的静态站点生成器
+
+  - class_name: 合作伙伴
+    class_desc: 伙伴们的博客
+    type: item
+    link_list:
+      - name: Bin9chn
+        link: https://bin9chn.github.io/
+        avatar: /img/friends/bin9chn.png
+        descr: 好友的博客
+      - name: Coinsheep
+        link: https://dnjs15.github.io/
+        avatar: /img/friends/dnjs15.png
+        descr: 好友的博客
