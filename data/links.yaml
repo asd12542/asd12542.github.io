@@ -1,0 +1,31 @@
+links:
+  - class_name: CTF 平台
+    class_desc: 常刷题的平台
+    type: item
+    link_list:
+      - name: CTFHub
+        link: https://www.ctfhub.com/
+        descr: 国内综合 CTF 技能树刷题平台
+      - name: BUUCTF
+        link: https://buuoj.cn/
+        descr: 各大赛事题目复现平台
+      - name: 攻防世界
+        link: https://adworld.xctf.org.cn/
+        descr: XCTF 攻防世界
+      - name: CTFtime
+        link: https://ctftime.org/
+        descr: 国际 CTF 赛事日历与战队排名
+
+  - class_name: 学习资源
+    class_desc: Web 安全学习
+    type: item
+    link_list:
+      - name: 菜鸟教程
+        link: https://www.runoob.com/
+        descr: 语言基础
+      - name: MDN Web Docs
+        link: https://developer.mozilla.org/zh-CN/
+        descr: Web 标准文档
+      - name: Hugo
+        link: https://gohugo.io/
+        descr: 本站使用的静态站点生成器

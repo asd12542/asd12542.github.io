@@ -1,0 +1,19 @@
+/* 站点级自定义样式：柔和暖色背景 */
+/* 覆盖 Solitude 主题默认的冷灰蓝背景 */
+
+/* ===== 亮色模式：暖米色背景 ===== */
+:root {
+  /* 页面主背景：由冷蓝灰白 #f7f9fe 改为柔和暖米色 */
+  --efu-background: #f7f2ea;
+  /* 侧边栏/悬浮背景同步调暖 */
+  --sidebar-bg: #f3ede2;
+  --text-bg-hover: #f3ede2;
+  --search-bg: #faf7f1;
+  --tab-botton-bg: #f0eadd;
+  --tab-button-active-bg: #fffdf8;
+}
+
+/* ===== 暗色模式：微暖深色，避免死黑冷灰 ===== */
+[data-theme=dark] {
+  --efu-background: #201d18;
+}

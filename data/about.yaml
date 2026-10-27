@@ -1,0 +1,36 @@
+title: 关于我
+sections:
+  - type: intro
+    greeting: 你好，我是
+    name: Jay
+    description: CTF 玩家 / Web 安全学习者
+    pursuit:
+      label: 方向
+      lines: [Web, Security]
+      rotating_words: [PHP, Python, Flask, 反序列化, SQL注入, RCE, 文件上传]
+
+  - type: skills_career
+    skills:
+      label: 技能
+      title: 常用工具与技术
+      items:
+        - { name: Burp Suite, icon: fas fa-shield-halved, color: "#ff6b35" }
+        - { name: Python, icon: fab fa-python, color: "#3776ab" }
+        - { name: PHP, icon: fab fa-php, color: "#777bb4" }
+        - { name: Flask, icon: fas fa-flask, color: "#7c3aed" }
+        - { name: SQL, icon: fas fa-database, color: "#336791" }
+        - { name: Linux, icon: fab fa-linux, color: "#111827" }
+        - { name: Docker, icon: fab fa-docker, color: "#2496ed" }
+        - { name: Git, icon: fab fa-git-alt, color: "#f05032" }
+    career:
+      label: 历程
+      title: 从新生赛到国赛
+      summary:
+        - { name: "2026.03, 开始写 Writeup", color: "#16a34a" }
+        - { name: "2026.05, CISCN 2026", color: "#425aef" }
+        - { name: "现在, 持续学习", color: "#ff4088" }
+      timeline:
+        start: 2026
+        end: 2027
+        start_label: 2026
+        end_label: 未来

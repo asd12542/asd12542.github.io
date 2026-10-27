@@ -1,0 +1,151 @@
+baseURL: https://asd12542.github.io/
+title: Jay 的博客
+locale: zh-CN
+defaultContentLanguage: zh-cn
+timeZone: Asia/Shanghai
+enableRobotsTXT: true
+enableGitInfo: false
+theme: solitude
+
+outputs:
+  home: [HTML, RSS, Search, Links]
+  section: [HTML, RSS]
+  taxonomy: [HTML, RSS]
+  term: [HTML, RSS]
+
+pagination:
+  pagerSize: 10
+
+permalinks:
+  posts: /p/:slug
+
+menus:
+  main:
+    - name: 文库
+      identifier: library
+      weight: 10
+    - name: 友链
+      identifier: friends
+      weight: 20
+    - name: 我的
+      identifier: personal
+      weight: 30
+    - name: 全部文章
+      pageRef: /archives
+      parent: library
+      weight: 10
+      params:
+        icon: fas fa-folder-closed
+    - name: 全部分类
+      pageRef: /categories
+      parent: library
+      weight: 20
+      params:
+        icon: fas fa-clone
+    - name: 全部标签
+      pageRef: /tags
+      parent: library
+      weight: 30
+      params:
+        icon: fas fa-tags
+    - name: 友情链接
+      pageRef: /links
+      parent: friends
+      weight: 10
+      params:
+        icon: fas fa-link
+    - name: 关于我
+      pageRef: /about
+      parent: personal
+      weight: 10
+      params:
+        icon: fas fa-user
+
+params:
+  author:
+    name: Jay
+  description: CTF Writeup 与 Web 安全学习笔记
+  solitude:
+    site:
+      name:
+        class: text
+        custom: Jay
+    nav:
+      group:
+        我的:
+          - name: GitHub
+            url: https://github.com/asd12542
+            icon: /img/logo.png
+    hometop:
+      banner:
+        title: Jay<br>的安全笔记
+        desc: CTF Writeup 与 Web 安全学习记录
+    aside:
+      home:
+        noSticky: about
+        Sticky: allInfo
+      post:
+        noSticky: about
+        Sticky: newestPost,allInfo
+      page:
+        noSticky: about
+        Sticky: newestPost,allInfo
+      my_card:
+        author:
+          img: https://github.com/asd12542.png
+          emoji: "🐱"
+        description: CTF 玩家 / Web 安全学习者
+        content: 记录每一道题的思路与复现过程。
+        witty_words: [Stay Curious, Keep Hacking, Think Outside the Box]
+        information:
+          - name: GitHub
+            url: https://github.com/asd12542
+            icon: fab fa-github
+      siteinfo:
+        runtime: 2026-03-03 00:00:00
+    post:
+      meta:
+        pv: false
+        comment: false
+      covercolor:
+        enable: false
+      award:
+        enable: false
+      share:
+        enable: false
+    footer:
+      information:
+        author: https://github.com/asd12542.png
+        left:
+          - name: GitHub
+            url: https://github.com/asd12542
+            icon: fab fa-github
+        right:
+          - name: 订阅
+            url: /index.xml
+            icon: fas fa-rss
+      group:
+        探索:
+          - name: 文章
+            url: /archives/
+          - name: 分类
+            url: /categories/
+          - name: 标签
+            url: /tags/
+      links:
+        - name: 订阅
+          url: /index.xml
+    highlight:
+      enable: true
+      copy: true
+      line_numbers: true
+      max_height: 360
+      themes:
+        light: github-light
+        dark: github-dark
+    search:
+      enable: true
+      type: local
+      local:
+        preload: true
+        CDN: /search.xml

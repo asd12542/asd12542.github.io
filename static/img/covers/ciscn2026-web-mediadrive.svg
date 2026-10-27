@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" font-family="Consolas, 'Courier New', monospace">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e5a8a8"/>
+      <stop offset="1" stop-color="#c26d6d"/>
+    </linearGradient>
+    <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse">
+      <circle cx="4" cy="4" r="2.2" fill="#ffffff" opacity="0.28"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <circle cx="1000" cy="60" r="200" fill="#ffffff" opacity="0.10"/>
+  <circle cx="120" cy="580" r="150" fill="#ffffff" opacity="0.08"/>
+
+  <!-- document with folded corner -->
+  <g transform="translate(580,270)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M -80,-110 h 110 l 50,50 v 170 h -160 z"/>
+    <path d="M 30,-110 v 50 h 50"/>
+    <path d="M -45,-5 h 90 M -45,35 h 90 M -45,75 h 55"/>
+  </g>
+  <!-- encoding conversion arrows -->
+  <g transform="translate(580,490)" stroke="#ffffff" stroke-opacity="0.92" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M -170,-5 h 240 M 70,-5 L 30,-33 M 70,-5 L 30,23"/>
+    <path d="M 170,55 h -240 M -70,55 L -30,27 M -70,55 L -30,83"/>
+  </g>
+
+  <text x="70" y="560" font-size="34" letter-spacing="6" fill="#ffffff" opacity="0.9">CISCN 2026 / WEB</text>
+  <rect x="62" y="575" width="120" height="6" rx="3" fill="#ffffff" opacity="0.6"/>
+</svg>
