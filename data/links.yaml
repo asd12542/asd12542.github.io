@@ -45,3 +45,7 @@ links:
         link: https://dnjs15.github.io/
         avatar: /img/friends/dnjs15.png
         descr: 好友的博客
+      - name: 申请友链
+        link: /apply/
+        avatar: /img/friends/apply.svg
+        descr: 想和我交换友链？点这里申请

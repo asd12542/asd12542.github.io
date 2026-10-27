@@ -1,0 +1,257 @@
+{{ define "main" }}
+<main class="layout hide-aside" id="content-inner">
+  <div id="page">
+    <header class="fa-head">
+      <span class="fa-crumb">~/FRIENDS/APPLY</span>
+      <h1 class="fa-title">申请友链</h1>
+      <p class="fa-sub">填写站点信息，提交后会在 GitHub 生成一条预填好的申请 Issue，审核通过后会加入友链页。</p>
+    </header>
+
+    <div class="fa-wrap">
+      <!-- 左侧：表单 -->
+      <section class="fa-card fa-form-card">
+        <div class="fa-grid">
+          <div class="fa-field">
+            <label class="fa-label" for="fa-name">站点名称 <span class="fa-req">*</span></label>
+            <input class="fa-input" id="fa-name" type="text" maxlength="20" placeholder="例如：Coinsheep" autocomplete="off">
+          </div>
+          <div class="fa-field">
+            <label class="fa-label" for="fa-url">站点地址 <span class="fa-req">*</span></label>
+            <input class="fa-input" id="fa-url" type="url" placeholder="https://example.com/" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="fa-field">
+          <label class="fa-label" for="fa-desc">一句话简介 <span class="fa-req">*</span><span class="fa-count" id="fa-desc-count">0 / 120</span></label>
+          <textarea class="fa-input fa-textarea" id="fa-desc" rows="3" maxlength="120" placeholder="这个站点主要写什么？例如：记录 Web 安全、漏洞复现与代码审计。"></textarea>
+          <p class="fa-hint">会直接显示在友链卡片上，建议 20~60 字。</p>
+        </div>
+
+        <div class="fa-grid">
+          <div class="fa-field">
+            <label class="fa-label" for="fa-avatar">头像地址</label>
+            <input class="fa-input" id="fa-avatar" type="url" placeholder="https://example.com/avatar.png" autocomplete="off">
+            <p class="fa-hint">留空则用站点域名首字符生成占位头像。</p>
+          </div>
+          <div class="fa-field">
+            <label class="fa-label" for="fa-tags">标签</label>
+            <input class="fa-input" id="fa-tags" type="text" maxlength="60" placeholder="Web安全, 漏洞复现, CTF" autocomplete="off">
+            <p class="fa-hint">用逗号分隔，最多 4 个，每个不超过 12 字。</p>
+          </div>
+        </div>
+
+        <div class="fa-grid">
+          <div class="fa-field">
+            <label class="fa-label" for="fa-email">联系邮箱</label>
+            <input class="fa-input" id="fa-email" type="email" placeholder="you@example.com" autocomplete="off">
+          </div>
+          <div class="fa-field">
+            <label class="fa-label" for="fa-rss">RSS 订阅</label>
+            <input class="fa-input" id="fa-rss" type="url" placeholder="https://example.com/index.xml" autocomplete="off">
+          </div>
+        </div>
+
+        <div class="fa-actions">
+          <button class="fa-btn fa-btn-ghost" type="button" id="fa-reset">重置</button>
+          <button class="fa-btn fa-btn-primary" type="button" id="fa-submit">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
+            提交申请（跳转 GitHub Issue）
+          </button>
+        </div>
+        <p class="fa-note">提交只是打开一条预填好的 Issue，你还需要在 GitHub 上点一次「Submit new issue」才算完成。</p>
+      </section>
+
+      <!-- 右侧：预览 + 本站信息 -->
+      <aside class="fa-side">
+        <section class="fa-card">
+          <div class="fa-card-head"><span>卡片预览</span><span class="fa-live" id="fa-live-dot">live</span></div>
+          <div class="fa-preview-outer">
+            <div class="fa-flink-card">
+              <div class="fa-flink-avatar" id="fp-avatar">?</div>
+              <div class="fa-flink-body">
+                <div class="fa-flink-name" id="fp-name">站点名称</div>
+                <div class="fa-flink-desc" id="fp-desc">这里会显示你填写的一句话简介，最终效果与友链页一致。</div>
+                <div class="fa-flink-tags" id="fp-tags"><span class="fa-chip">待填</span></div>
+              </div>
+              <div class="fa-flink-domain" id="fp-domain">example.com</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="fa-card">
+          <div class="fa-card-head"><span>本站信息</span></div>
+          <ul class="fa-site-info">
+            <li><span>名称</span><b>Jay</b></li>
+            <li><span>地址</span><a href="https://asd12542.github.io/" target="_blank" rel="noopener">https://asd12542.github.io/</a></li>
+            <li><span>头像</span><a href="https://asd12542.github.io/img/logo.png" target="_blank" rel="noopener">https://asd12542.github.io/img/logo.png</a></li>
+            <li><span>简介</span><b>CTF Writeup 与 Web 安全学习笔记</b></li>
+            <li><span>RSS</span><a href="/index.xml" target="_blank" rel="noopener">https://asd12542.github.io/index.xml</a></li>
+          </ul>
+          <button class="fa-btn fa-btn-ghost fa-copy" type="button" id="fa-copy">📋 复制本站信息</button>
+        </section>
+      </aside>
+    </div>
+  </div>
+</main>
+
+<style>
+/* ===== 申请友链页样式（fa- 前缀，跟随主题暖色变量） ===== */
+.fa-head { margin: 0.5rem 0 1.25rem; }
+.fa-crumb { font-family: monospace; font-size: 0.75rem; letter-spacing: 2px; color: var(--efu-second-fontcolor, #7a7a7a); }
+.fa-title { font-size: 2rem; font-weight: 700; margin: 0.35rem 0 0.5rem; color: var(--efu-fontcolor); }
+.fa-sub { color: var(--efu-second-fontcolor, #7a7a7a); font-size: 0.92rem; margin: 0; }
+
+.fa-wrap { display: grid; grid-template-columns: minmax(0, 1.55fr) minmax(280px, 1fr); gap: 1rem; align-items: start; }
+@media (max-width: 900px) { .fa-wrap { grid-template-columns: 1fr; } }
+
+.fa-card { background: var(--efu-card-bg, #fff); border: 1px solid var(--efu-card-border, #e3e3e3); border-radius: 14px; padding: 1.25rem; }
+.fa-card-head { display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: var(--efu-fontcolor); margin-bottom: 0.9rem; }
+.fa-live { font-family: monospace; font-size: 0.7rem; color: #2ea44f; border: 1px solid #2ea44f55; border-radius: 999px; padding: 1px 8px; }
+
+.fa-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; }
+@media (max-width: 600px) { .fa-grid { grid-template-columns: 1fr; } }
+.fa-field { margin-bottom: 0.9rem; }
+.fa-label { display: flex; justify-content: space-between; align-items: baseline; font-size: 0.85rem; font-weight: 600; color: var(--efu-fontcolor); margin-bottom: 0.4rem; }
+.fa-req { color: #e5534b; }
+.fa-count { font-family: monospace; font-size: 0.7rem; font-weight: 400; color: var(--efu-second-fontcolor, #999); }
+.fa-input { width: 100%; box-sizing: border-box; background: var(--efu-secondbg, #f7f7f7); border: 1px solid transparent; border-radius: 10px; padding: 0.6rem 0.8rem; font-size: 0.9rem; color: var(--efu-fontcolor); outline: none; transition: border-color 0.2s, background 0.2s; }
+.fa-input:focus { border-color: var(--efu-theme, #425aef); background: var(--efu-card-bg, #fff); }
+.fa-input::placeholder { color: var(--efu-third-fontcolor, #b0b0b0); }
+.fa-textarea { resize: vertical; min-height: 4.6rem; }
+.fa-hint { margin: 0.35rem 0 0; font-size: 0.74rem; color: var(--efu-second-fontcolor, #999); }
+
+.fa-actions { display: flex; gap: 0.7rem; justify-content: flex-end; margin-top: 0.4rem; }
+.fa-btn { display: inline-flex; align-items: center; gap: 0.45rem; border: none; border-radius: 10px; padding: 0.6rem 1.05rem; font-size: 0.88rem; font-weight: 600; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s, opacity 0.15s; }
+.fa-btn:hover { transform: translateY(-1px); }
+.fa-btn:active { transform: translateY(0); }
+.fa-btn-primary { background: var(--efu-theme, #425aef); color: #fff; box-shadow: 0 4px 14px #425aef33; }
+.fa-btn-ghost { background: var(--efu-secondbg, #f0f0f0); color: var(--efu-fontcolor); }
+.fa-note { margin: 0.8rem 0 0; font-size: 0.75rem; color: var(--efu-second-fontcolor, #999); }
+
+/* 预览卡片：尽量还原友链页卡片观感 */
+.fa-preview-outer { background: var(--efu-secondbg, #f2f2f2); border-radius: 12px; padding: 0.9rem; }
+.fa-flink-card { position: relative; display: flex; gap: 0.75rem; background: var(--efu-card-bg, #fff); border-radius: 12px; padding: 0.95rem 0.95rem 1.9rem; box-shadow: 0 3px 10px rgba(0,0,0,.06); }
+.fa-flink-avatar { flex: none; width: 52px; height: 52px; border-radius: 50%; background: var(--efu-theme, #425aef); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; font-weight: 700; overflow: hidden; background-size: cover; background-position: center; }
+.fa-flink-name { font-weight: 700; color: var(--efu-fontcolor); font-size: 0.98rem; }
+.fa-flink-desc { font-size: 0.8rem; color: var(--efu-second-fontcolor, #777); margin: 0.25rem 0 0.4rem; line-height: 1.5; }
+.fa-flink-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.fa-chip { font-size: 0.68rem; color: var(--efu-theme, #425aef); background: var(--efu-main-op-light, #eee); border-radius: 6px; padding: 1px 7px; }
+.fa-flink-domain { position: absolute; left: 1.4rem; bottom: 0.55rem; font-family: monospace; font-size: 0.68rem; color: var(--efu-second-fontcolor, #999); }
+
+.fa-site-info { list-style: none; margin: 0 0 0.9rem; padding: 0; font-size: 0.8rem; }
+.fa-site-info li { display: flex; gap: 0.6rem; padding: 0.3rem 0; align-items: baseline; }
+.fa-site-info span { flex: none; width: 2.8em; color: var(--efu-second-fontcolor, #999); }
+.fa-site-info a, .fa-site-info b { color: var(--efu-fontcolor); word-break: break-all; font-weight: 500; }
+.fa-site-info a:hover { color: var(--efu-theme, #425aef); }
+.fa-copy { width: 100%; justify-content: center; }
+.fa-msg-ok { color: #2ea44f !important; }
+</style>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var nameEl = $('fa-name'), urlEl = $('fa-url'), descEl = $('fa-desc'),
+      avatarEl = $('fa-avatar'), tagsEl = $('fa-tags'),
+      emailEl = $('fa-email'), rssEl = $('fa-rss');
+
+  /* 字数统计 */
+  descEl.addEventListener('input', function () {
+    $('fa-desc-count').textContent = descEl.value.length + ' / 120';
+  });
+
+  function parseTags() {
+    return tagsEl.value.split(/[,，、]/).map(function (s) { return s.trim(); })
+      .filter(Boolean).slice(0, 4);
+  }
+  function domainOf(u) {
+    try { return new URL(u).hostname; } catch (e) { return 'example.com'; }
+  }
+
+  /* 实时预览 */
+  function render() {
+    var name = nameEl.value.trim() || '站点名称';
+    var desc = descEl.value.trim() || '这里会显示你填写的一句话简介，最终效果与友链页一致。';
+    var url = urlEl.value.trim();
+    var tags = parseTags();
+
+    $('fp-name').textContent = name;
+    $('fp-desc').textContent = desc;
+    $('fp-domain').textContent = url ? domainOf(url) : 'example.com';
+
+    var tagBox = $('fp-tags');
+    tagBox.innerHTML = '';
+    (tags.length ? tags : ['待填']).forEach(function (t) {
+      var s = document.createElement('span');
+      s.className = 'fa-chip'; s.textContent = t;
+      tagBox.appendChild(s);
+    });
+
+    var av = $('fp-avatar');
+    var a = avatarEl.value.trim();
+    if (a) {
+      av.textContent = '';
+      av.style.backgroundImage = 'url("' + a.replace(/"/g, '%22') + '")';
+    } else {
+      av.style.backgroundImage = 'none';
+      av.textContent = (nameEl.value.trim() || '?').charAt(0).toUpperCase();
+    }
+  }
+  [nameEl, urlEl, descEl, avatarEl, tagsEl].forEach(function (el) {
+    el.addEventListener('input', render);
+  });
+  render();
+
+  /* 重置 */
+  $('fa-reset').addEventListener('click', function () {
+    [nameEl, urlEl, descEl, avatarEl, tagsEl, emailEl, rssEl].forEach(function (el) { el.value = ''; });
+    $('fa-desc-count').textContent = '0 / 120';
+    render();
+  });
+
+  /* 生成预填 GitHub Issue */
+  $('fa-submit').addEventListener('click', function () {
+    var name = nameEl.value.trim(), url = urlEl.value.trim(), desc = descEl.value.trim();
+    if (!name || !url || !desc) { alert('请先填写带 * 的必填项：站点名称、站点地址、一句话简介'); return; }
+    if (!/^https?:\/\//i.test(url)) { alert('站点地址需要以 http:// 或 https:// 开头'); return; }
+
+    var lines = [
+      '## 友链申请', '',
+      '- **站点名称**：' + name,
+      '- **站点地址**：' + url,
+      '- **一句话简介**：' + desc
+    ];
+    if (avatarEl.value.trim()) lines.push('- **头像地址**：' + avatarEl.value.trim());
+    if (parseTags().length) lines.push('- **标签**：' + parseTags().join('、'));
+    if (emailEl.value.trim()) lines.push('- **联系邮箱**：' + emailEl.value.trim());
+    if (rssEl.value.trim()) lines.push('- **RSS 订阅**：' + rssEl.value.trim());
+    lines.push('', '> 本条 Issue 由博客「申请友链」页面自动生成，审核通过后会加入友链页。');
+
+    var gh = 'https://github.com/asd12542/asd12542.github.io/issues/new'
+      + '?title=' + encodeURIComponent('友链申请：' + name)
+      + '&body=' + encodeURIComponent(lines.join('\n'));
+    window.open(gh, '_blank', 'noopener');
+  });
+
+  /* 复制本站信息 */
+  $('fa-copy').addEventListener('click', function () {
+    var info = [
+      '名称：Jay',
+      '地址：https://asd12542.github.io/',
+      '头像：https://asd12542.github.io/img/logo.png',
+      '简介：CTF Writeup 与 Web 安全学习笔记',
+      'RSS：https://asd12542.github.io/index.xml'
+    ].join('\n');
+    var btn = this;
+    function done() { btn.textContent = '✅ 已复制'; btn.classList.add('fa-msg-ok');
+      setTimeout(function () { btn.textContent = '📋 复制本站信息'; btn.classList.remove('fa-msg-ok'); }, 1600); }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(info).then(done);
+    } else {
+      var t = document.createElement('textarea');
+      t.value = info; document.body.appendChild(t); t.select();
+      document.execCommand('copy'); document.body.removeChild(t); done();
+    }
+  });
+})();
+</script>
+{{ end }}
