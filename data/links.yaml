@@ -5,15 +5,19 @@ links:
     link_list:
       - name: CTFHub
         link: https://www.ctfhub.com/
+        avatar: /img/friends/ctfhub.png
         descr: 国内综合 CTF 技能树刷题平台
       - name: BUUCTF
         link: https://ctf2.dasctf.com
+        avatar: /img/friends/buuctf.png
         descr: 各大赛事题目复现平台（新地址）
       - name: 攻防世界
         link: https://adworld.xctf.org.cn/
+        avatar: /img/friends/xctf.png
         descr: XCTF 攻防世界
       - name: CTFtime
         link: https://ctftime.org/
+        avatar: /img/friends/ctftime.png
         descr: 国际 CTF 赛事日历与战队排名
 
   - class_name: 学习资源
@@ -22,10 +26,13 @@ links:
     link_list:
       - name: 菜鸟教程
         link: https://www.runoob.com/
+        avatar: /img/friends/runoob.png
         descr: 语言基础
       - name: MDN Web Docs
         link: https://developer.mozilla.org/zh-CN/
+        avatar: /img/friends/mdn.png
         descr: Web 标准文档
       - name: Hugo
         link: https://gohugo.io/
+        avatar: /img/friends/hugo.png
         descr: 本站使用的静态站点生成器
