@@ -15,27 +15,23 @@ links:
         link: https://adworld.xctf.org.cn/
         avatar: /img/friends/xctf.png
         descr: XCTF 攻防世界
-      - name: CTFtime
-        link: https://ctftime.org/
-        avatar: /img/friends/ctftime.png
-        descr: 国际 CTF 赛事日历与战队排名
+      - name: CTF+
+        link: https://www.ctfplus.cn/
+        avatar: /img/friends/ctfplus.svg
+        descr: CTF 学习与交流平台
 
   - class_name: 学习资源
     class_desc: Web 安全学习
     type: item
     link_list:
-      - name: 菜鸟教程
-        link: https://www.runoob.com/
-        avatar: /img/friends/runoob.png
-        descr: 语言基础
+      - name: GitHub
+        link: https://github.com/
+        avatar: /img/friends/github.png
+        descr: 全球最大的代码托管平台
       - name: MDN Web Docs
         link: https://developer.mozilla.org/zh-CN/
         avatar: /img/friends/mdn.png
         descr: Web 标准文档
-      - name: Hugo
-        link: https://gohugo.io/
-        avatar: /img/friends/hugo.png
-        descr: 本站使用的静态站点生成器
 
   - class_name: 合作伙伴
     class_desc: 伙伴们的博客
