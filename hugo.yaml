@@ -67,6 +67,7 @@ params:
   description: CTF Writeup 与 Web 安全学习笔记
   solitude:
     site:
+      icon: /img/logo.png
       name:
         class: text
         custom: Jay
