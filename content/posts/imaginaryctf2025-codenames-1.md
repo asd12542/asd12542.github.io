@@ -4,7 +4,7 @@ date: 2026-06-02T21:40:00+08:00
 lastmod: 2026-06-02T21:41:59+08:00
 slug: imaginaryctf2025-codenames-1
 description: os.path.join 路径穿越读取 /flag.txt，结合双用户局内信息共享拿到 flag
-cover: /img/covers/imaginaryctf2025-codenames-1.svg
+cover: /img/posts/imaginaryctf2025-codenames-1/01.png
 categories: [CTF]
 tags: [ImaginaryCTF, Web, Python, 路径穿越]
 toc: true
@@ -156,9 +156,15 @@ def join_game():
 
 首先 bp 在 `/create_game` 下抓包，修改 `language=/flag`，发包：
 
+![Burp 抓包修改 language](/img/posts/imaginaryctf2025-codenames-1/01.png)
+
 发包之后返回 code，利用 code，使用新的账户加入 game：
 
+![返回邀请码](/img/posts/imaginaryctf2025-codenames-1/02.png)
+
 利用新用户 admin 访问可以得到：
+
+![admin 访问得到 flag](/img/posts/imaginaryctf2025-codenames-1/03.png)
 
 最终 flag：`ictf{common_os_path_join_L_b19d35ca}`
 

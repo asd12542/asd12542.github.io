@@ -3,7 +3,7 @@ title: CISCN 2026 Web MediaDrive
 date: 2026-05-08T18:08:01+08:00
 slug: ciscn2026-web-mediadrive
 description: 利用 iconv 的 UTF-7 转码特性 + preg_match 脏字符截断差异，绕过正则读取 /flag
-cover: /img/covers/ciscn2026-web-mediadrive.svg
+cover: /img/posts/ciscn2026-web-mediadrive/01.png
 categories: [CTF]
 tags: [CISCN, Web, PHP, 反序列化, iconv]
 toc: true
@@ -56,7 +56,9 @@ if ($convertedPath === false || $convertedPath === "") {
 $content = @file_get_contents($convertedPath);
 ```
 
-将拼接好的变量 `$rawPath` 和特定字符串进行比较，之后利用函数 `iconv` 进行转码，之后再通过文件读取获得内容。
+将拼接好的变量 `$rawPath` 和特定字符串进行比较，之后利用函数 `iconv` 进行转码，之后再通过文件读取获得内容。以下是根据 PHP 手册对 iconv 函数的描述：
+
+![iconv 函数说明](/img/posts/ciscn2026-web-mediadrive/01.png)
 
 ## c. payload 构建
 
@@ -93,6 +95,8 @@ echo urlencode(serialize($a));
 ```
 
 之后打开 Burp Suite，进入预览界面，将 f 改为 `f%c2lag`，然后发包，得到 flag：
+
+![Burp 发包得到 flag](/img/posts/ciscn2026-web-mediadrive/02.png)
 
 ```text
 flag{6536db6a-f39e-42ab-8453-919a48b523c0}

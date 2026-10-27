@@ -3,25 +3,35 @@ title: GXYCTF 2019 Ping Ping Ping
 date: 2026-03-16T00:17:57+08:00
 slug: gxyctf2019-ping-ping-ping
 description: 命令执行过滤空格、flag 关键词与通配符，用变量拼接 $IFS$9 绕过
-cover: /img/covers/gxyctf2019-ping-ping-ping.svg
+cover: /img/posts/gxyctf2019-ping-ping-ping/01.png
 categories: [CTF]
 tags: [GXYCTF, Web, RCE, 命令执行]
 toc: true
 comment: false
 ---
 
+![题目界面](/img/posts/gxyctf2019-ping-ping-ping/01.png)
+
 ## a. 方法一
 
-进入题目我们发现需要 ping 地址，那我们就输入常见的 `127.0.0.1`，正常回显。
+进入题目我们发现需要 ping 地址，那我们就输入常见的 `127.0.0.1`，正常回显：
 
-之后试着在地址之后加上指令 `ls` 来读取文件，看到两个 php 文件之后，我们第一时间想着去读取试试，结果返回的是：
+![ping 127.0.0.1 回显](/img/posts/gxyctf2019-ping-ping-ping/02.png)
+
+之后试着在地址之后加上指令 `ls` 来读取文件：
+
+![ls 读取文件](/img/posts/gxyctf2019-ping-ping-ping/03.png)
+
+看到两个 php 文件之后，我们第一时间想着去读取试试，结果返回的是：
 
 ```text
 127.0.0.1;cat /index.php
 1fxck your symbol!
 ```
 
-经过尝试我们发现这里**过滤了空格**。然后我们尝试 `${IFS}` 去绕过，发现还是不行，我们继续尝试 `$IFS$9`，成功读到本题的源代码：
+经过尝试我们发现这里**过滤了空格**。然后我们尝试 `${IFS}` 去绕过，发现还是不行，我们继续尝试 `$IFS$9`：
+
+![IFS$9 绕过](/img/posts/gxyctf2019-ping-ping-ping/04.png)
 
 ```php
 <?php
@@ -62,6 +72,8 @@ if(isset($_GET['ip'])){
 ```text
 NSSCTF{cc5ba224-40b2-436f-bbfd-57cd5e563b5e}
 ```
+
+![最终 flag](/img/posts/gxyctf2019-ping-ping-ping/05.png)
 
 ## b. 方法二
 

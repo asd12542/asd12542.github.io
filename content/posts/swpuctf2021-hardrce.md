@@ -3,7 +3,7 @@ title: SWPUCTF 2021 新生赛 hardrce
 date: 2026-03-18T13:42:26+08:00
 slug: swpuctf2021-hardrce
 description: 过滤所有字母和大部分符号，用取反（~）编码构造无字母 RCE 绕过
-cover: /img/covers/swpuctf2021-hardrce.svg
+cover: /img/posts/swpuctf2021-hardrce/01.png
 categories: [CTF]
 tags: [SWPUCTF, Web, PHP, RCE, 取反绕过]
 toc: true
@@ -11,6 +11,8 @@ comment: false
 ---
 
 本体总来讲还是比较简单的，主要就是考察 RCE 绕过，不过也给新入门的小伙伴提供了一个新思路，就是无字母的 RCE，可以进行绕过，例如异或、取反、自增自减等。
+
+![题目界面](/img/posts/swpuctf2021-hardrce/01.png)
 
 ## a. 源代码
 
@@ -74,7 +76,7 @@ echo urlencode(~'ls /');
 ?wllm=(~%8C%86%8C%8B%9A%92)(~%93%8C%DF%D0);
 ```
 
-![执行结果](/img/posts/hardrce/payload-ls.png)
+![执行结果](/img/posts/swpuctf2021-hardrce/02.png)
 
 再来构建指令 `system('cat /flllllaaaaaaggggggg');`：
 

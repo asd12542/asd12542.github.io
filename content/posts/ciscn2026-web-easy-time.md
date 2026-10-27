@@ -3,7 +3,7 @@ title: CISCN 2026 Web easy_time
 date: 2026-05-12T14:13:01+08:00
 slug: ciscn2026-web-easy-time
 description: Cookie 伪造登录 + Zip Slip 目录穿越写马 + SSRF，三步拿到 flag
-cover: /img/covers/ciscn2026-web-easy-time.svg
+cover: /img/posts/ciscn2026-web-easy-time/01.png
 categories: [CTF]
 tags: [CISCN, Web, SSRF, 文件上传, Zip Slip]
 toc: true
@@ -11,6 +11,8 @@ comment: false
 ---
 
 我这是复现，所以有些环境可能会有出入，借鉴了一些大佬的思路（[第十九届全国大学生信息安全竞赛半决赛 Web 题 easy_time 详细题解：Cookie 伪造 + Zip Slip + SSRF 拿 Flag](https://blog.csdn.net/2301_76794844/article/details/159472594)）。
+
+![题目环境](/img/posts/ciscn2026-web-easy-time/01.png)
 
 ## a. 登录界面
 
@@ -61,12 +63,24 @@ def login_required(view):
 这个设置可以让每个网页的访问都满足两个 Cookie 的值，从而满足登录校验器：
 
 1. **第一步**：点开设置添加
+
+![第一步 点开设置添加](/img/posts/ciscn2026-web-easy-time/02.png)
+
 2. **第二步**：设定特定数值（同样一步使用两次，第一次设置 `visited=yes`，第二次设置 `user=admin`——源码只对 visited 有要求为 yes，对 user 的数值没有特定要求，只要有值就行）
+
+![第二步 设定 visited 和 user](/img/posts/ciscn2026-web-easy-time/03.png)
+
 3. **第三步**：设置应用范围
+
+![第三步 设置应用范围](/img/posts/ciscn2026-web-easy-time/04.png)
 
 ### 3. BP 发包
 
 在根目录下抓包，添加 Cookie 数值，之后发包，满足登录校验，页面重定向到 `/dashboard`。
+
+![BP 发包重定向到 dashboard](/img/posts/ciscn2026-web-easy-time/05.png)
+
+![dashboard 界面](/img/posts/ciscn2026-web-easy-time/06.png)
 
 ## b. 后台面板（SSRF / 文件上传）
 
@@ -95,9 +109,19 @@ def fetch_remote_avatar_info(url: str):
         return None
 ```
 
-根据源码，我们发现这个「头像远程 URL」功能只针对协议和域名地址进行了解析，并没有校验。再根据附件之前有个 YAML 文件中暴露内部的端口 `:80`，我们尝试访问 80 端口，返回了信息，说明存在 **SSRF**。
+根据源码，我们发现这个「头像远程 URL」功能只针对协议和域名地址进行了解析，并没有校验。再根据附件之前有个 YAML 文件中暴露内部的端口 `:80`：
 
-通常这个时候我们会想到的是通过目录穿越来获取 flag，发现并没有回显。于是我们继续查看这个页面的功能，发现前面存在一个「插件上传」的页面，要求上传压缩包，之后会自动解压。查看插件上传的源码，发现这个插件上传的操作只是检验了文件后缀和文件名：
+![头像远程 URL 功能](/img/posts/ciscn2026-web-easy-time/07.png)
+
+我们尝试访问 80 端口，返回了信息，说明存在 **SSRF**：
+
+![访问 80 端口确认 SSRF](/img/posts/ciscn2026-web-easy-time/08.png)
+
+通常这个时候我们会想到的是通过目录穿越来获取 flag，如下：
+
+![目录穿越尝试](/img/posts/ciscn2026-web-easy-time/09.png)
+
+发现并没有回显。于是我们继续查看这个页面的功能，发现前面存在一个「插件上传」的页面，要求上传压缩包，之后会自动解压。查看插件上传的源码，发现这个插件上传的操作只是检验了文件后缀和文件名：
 
 ```python
 @app.route('/plugin/upload', methods=['GET', 'POST'])
@@ -148,9 +172,19 @@ with zipfile.ZipFile("exp.zip", "w") as zipf:
     zipf.writestr("../../../../../../../var/www/html/shell.php", "<?php eval($_GET[1]);?>")
 ```
 
-我们将 exp.zip 上传之后，进行 shell.php 文件的访问。发现有很多文件，我们依次尝试，最后发现在 tmp 目录下存在一个 flag。
+我们将 exp.zip 上传之后，进行 shell.php 文件的访问：
 
-于是我们读取 flag，得到最终 flag：
+![上传 exp.zip 后的文件列表](/img/posts/ciscn2026-web-easy-time/10.png)
+
+发现有很多文件，我们依次尝试，最后发现在 tmp 目录下存在一个 flag：
+
+![在 tmp 目录发现 flag](/img/posts/ciscn2026-web-easy-time/11.png)
+
+于是我们读取 flag：
+
+![读取 flag](/img/posts/ciscn2026-web-easy-time/12.png)
+
+得到最终 flag：
 
 ```text
 flag{0960b1f1-413c-429c-bf42-91713c7700a2}

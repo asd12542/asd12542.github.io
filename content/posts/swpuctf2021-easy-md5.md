@@ -3,7 +3,7 @@ title: SWPUCTF 2021 新生赛 easy_md5
 date: 2026-03-03T10:19:09+08:00
 slug: swpuctf2021-easy-md5
 description: MD5 弱类型比较绕过——数组漏洞与 0e 开头科学计数法两种解法
-cover: /img/covers/swpuctf2021-easy-md5.svg
+cover: /img/posts/swpuctf2021-easy-md5/01.png
 categories: [CTF]
 tags: [SWPUCTF, Web, PHP, MD5, 弱类型比较]
 toc: true
@@ -12,7 +12,9 @@ comment: false
 
 题目链接：https://www.nssctf.cn/problem/386
 
-需要使用到的工具是 HackBar。
+需要使用到的工具是 HackBar：
+
+![HackBar 工具](/img/posts/swpuctf2021-easy-md5/01.png)
 
 ## 源代码
 
@@ -54,6 +56,8 @@ GET:  ?name[]=1
 POST: password[]=2
 ```
 
+![数组绕过得到 flag](/img/posts/swpuctf2021-easy-md5/02.png)
+
 flag 为：
 
 ```text
@@ -63,6 +67,8 @@ NSSCTF{b5d3504c-80c5-4ba5-b9fe-07f278b1d949}
 ### (2) 利用 PHP `==` 弱类型比较漏洞
 
 > **tip**：PHP 弱类型比较之前会进行字符串转化，而 MD5 之后以 `0e` 开头的会被解读为科学计数法（e 为指数），这样两者的值都为 0，输出 flag。
+
+![0e 科学计数法绕过](/img/posts/swpuctf2021-easy-md5/03.png)
 
 以下是常见 MD5 加密之后以 `0e` 开头的值（详情参照大佬的博客「常见的 MD5 碰撞：md5 值为 0e 开头」）：
 

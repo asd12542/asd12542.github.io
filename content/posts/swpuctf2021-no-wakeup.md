@@ -3,12 +3,14 @@ title: SWPUCTF 2021 新生赛 no_wakeup
 date: 2026-03-10T20:10:02+08:00
 slug: swpuctf2021-no-wakeup
 description: PHP 反序列化 __wakeup 绕过——属性个数大于实际值即不触发
-cover: /img/covers/swpuctf2021-no-wakeup.svg
+cover: /img/posts/swpuctf2021-no-wakeup/01.png
 categories: [CTF]
 tags: [SWPUCTF, Web, PHP, 反序列化, wakeup绕过]
 toc: true
 comment: false
 ---
+
+![题目界面](/img/posts/swpuctf2021-no-wakeup/01.png)
 
 ## 源代码
 
@@ -79,6 +81,8 @@ $a = serialize($a);
 echo $a;
 ?>
 ```
+
+![exp 运行结果](/img/posts/swpuctf2021-no-wakeup/02.png)
 
 因此构建 payload：
 
